@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 using ServiceLocator.Events;
 using ServiceLocator.Wave;
 using ServiceLocator.Player;
+using ServiceLocator.Sound;
 
 namespace ServiceLocator.UI
 {
     public class UIService : MonoBehaviour
     {
-        [SerializeField] private EventService eventService;
-        [SerializeField] private WaveService waveService;
-        [SerializeField] private PlayerService playerService;
+        [SerializeField] private EventService eventService;                
 
         [Header("Gameplay Panel")]
         [SerializeField] private GameObject gameplayPanel;
@@ -39,6 +38,22 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
+
+        public static UIService Instance { get { return instance; } }
+
+        private static UIService instance;
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
 
         private void Start()
@@ -71,7 +86,7 @@ namespace ServiceLocator.UI
 
         private void OnNextWaveButton()
         {
-            waveService.StarNextWave();
+            WaveService.Instance.StarNextWave();
             SetNextWaveButton(false);
         }
 
