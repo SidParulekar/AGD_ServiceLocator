@@ -10,7 +10,7 @@ using ServiceLocator.Sound;
 
 namespace ServiceLocator.UI
 {
-    public class UIService : MonoBehaviour
+    public class UIService : GenericSingleton<UIService>
     {
         [SerializeField] private EventService eventService;                
 
@@ -38,24 +38,7 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
-
-        public static UIService Instance { get { return instance; } }
-
-        private static UIService instance;
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
-
+       
         private void Start()
         {
             monkeySelectionController = new MonkeySelectionUIController(cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects);
