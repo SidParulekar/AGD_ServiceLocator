@@ -7,7 +7,7 @@ using ServiceLocator.Utilities;
 
 namespace ServiceLocator.Events
 {
-    public class EventService : GenericMonoSingleton<EventService>
+    public class EventService : GenericSingleton<EventService>
     {
         public GameEventController<int> OnMapSelected { get; private set; }
 

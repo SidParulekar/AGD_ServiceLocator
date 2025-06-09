@@ -8,7 +8,7 @@ using ServiceLocator.Sound;
 
 namespace ServiceLocator.Player
 {
-    public class PlayerService : GenericMonoSingleton<PlayerService>
+    public class PlayerService : GenericSingleton<PlayerService>
     {
         [SerializeField] public PlayerScriptableObject playerScriptableObject;
 
@@ -37,6 +37,14 @@ namespace ServiceLocator.Player
 
         public void Update()
         {
+            if (activeMonkeys.Count > 0)
+            {
+                foreach (MonkeyController controller in activeMonkeys)
+                {
+                    controller.UpdateMonkey();
+                }
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 UpdateSelectedMonkeyDisplay();

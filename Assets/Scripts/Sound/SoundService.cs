@@ -4,7 +4,7 @@ using ServiceLocator.Utilities;
 
 namespace ServiceLocator.Sound
 {
-    public class SoundService : GenericMonoSingleton<SoundService>
+    public class SoundService : GenericSingleton<SoundService>
     {
         [SerializeField] private SoundScriptableObject soundScriptableObject;
         [SerializeField] private AudioSource audioEffects;

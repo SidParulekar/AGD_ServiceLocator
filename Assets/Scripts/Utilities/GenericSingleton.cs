@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ServiceLocator.Utilities
 {
-    public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
+    public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T>
     {
         private static T instance;
         public static T Instance { get { return instance; } }

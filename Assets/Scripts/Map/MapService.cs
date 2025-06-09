@@ -7,7 +7,7 @@ using ServiceLocator.Events;
 
 namespace ServiceLocator.Map
 {
-    public class MapService : GenericMonoSingleton<MapService>
+    public class MapService : GenericSingleton<MapService>
     {
         [SerializeField] private MapScriptableObject mapScriptableObject;
 
