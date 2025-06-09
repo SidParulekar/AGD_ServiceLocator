@@ -1,10 +1,9 @@
-using ServiceLocator.Map;
 using System;
 using UnityEngine;
 
 namespace ServiceLocator.Sound
 {
-    public class SoundService : GenericSingleton<SoundService>
+    public class SoundService : MonoBehaviour
     {
         [SerializeField] private SoundScriptableObject soundScriptableObject;
         [SerializeField] private AudioSource audioEffects;

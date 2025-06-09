@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 using ServiceLocator.Events;
 using ServiceLocator.Wave;
 using ServiceLocator.Player;
-using ServiceLocator.Sound;
 
 namespace ServiceLocator.UI
 {
-    public class UIService : GenericSingleton<UIService>
+    public class UIService : MonoBehaviour
     {
-        [SerializeField] private EventService eventService;                
+        [SerializeField] private EventService eventService;
+        [SerializeField] private WaveService waveService;
+        [SerializeField] private PlayerService playerService;
 
         [Header("Gameplay Panel")]
         [SerializeField] private GameObject gameplayPanel;
@@ -38,10 +39,11 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
-       
+
+
         private void Start()
         {
-            monkeySelectionController = new MonkeySelectionUIController(cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects);
+            monkeySelectionController = new MonkeySelectionUIController(playerService, cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects);
             MonkeySelectionPanel.SetActive(false);
             monkeySelectionController.SetActive(false);
 
@@ -69,7 +71,7 @@ namespace ServiceLocator.UI
 
         private void OnNextWaveButton()
         {
-            WaveService.Instance.StarNextWave();
+            waveService.StarNextWave();
             SetNextWaveButton(false);
         }
 
