@@ -9,7 +9,7 @@ using ServiceLocator.Wave;
 
 namespace ServiceLocator.UI
 {
-    public class UIService : GenericSingleton<UIService>
+    public class UIService : MonoBehaviour
     {
         [Header("Gameplay Panel")]
         [SerializeField] private GameObject gameplayPanel;
