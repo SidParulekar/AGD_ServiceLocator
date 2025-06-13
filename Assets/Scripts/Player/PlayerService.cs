@@ -113,7 +113,7 @@ namespace ServiceLocator.Player
             GameService.Instance.UIService.UpdateHealthUI(health);
             if (health <= 0)
             {
-                PlayerDeath();
+                PlayerDeath(); 
             }
         }
 
