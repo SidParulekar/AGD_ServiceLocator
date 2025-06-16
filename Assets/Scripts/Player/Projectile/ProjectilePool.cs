@@ -23,11 +23,11 @@ namespace ServiceLocator.Player.Projectile
             projectileContainer = new GameObject("Projectile Container").transform;
         }
 
-        public ProjectileController GetProjectile(ProjectileType projectileType)
+        public ProjectileController GetProjectile(ProjectileType projectileType, PlayerService playerService)
         {
             ProjectileController projectile = GetItem();
             ProjectileScriptableObject scriptableObjectToUse = projectileScriptableObjects.Find(so => so.Type == projectileType);
-            projectile.Init(scriptableObjectToUse);
+            projectile.Init(scriptableObjectToUse, playerService);
             return projectile;
         }
 

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ServiceLocator.Utilities;
+using ServiceLocator.Player;
+using ServiceLocator.Sound;
 
 /*  This script demonstrates the implementation of Object Pool design pattern.
  *  If you're interested in learning about Object Pooling, you can find
@@ -23,11 +25,11 @@ namespace ServiceLocator.Wave.Bloon
             bloonContainer = new GameObject("Bloon Container").transform;
         }
 
-        public BloonController GetBloon(BloonType bloonType)
+        public BloonController GetBloon(BloonType bloonType, PlayerService playerService, WaveService waveService, SoundService soundService)
         {
             BloonController bloon = GetItem();
             BloonScriptableObject scriptableObjectToUse = bloonScriptableObjects.Find(so => so.Type == bloonType);
-            bloon.Init(scriptableObjectToUse);
+            bloon.Init(scriptableObjectToUse, playerService, waveService, soundService);
             return bloon;
         }
 
